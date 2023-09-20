@@ -1,0 +1,13 @@
+export const ACCESS_TOKEN = 'ACCESS_TOKEN';
+export const APP_THEME_OPTION_SELECTED = 'APP_THEME_OPTION_SELECTED';
+export const INTRO_KEY = 'INTRO_KEY';
+export const TIMER_FORWARD = 'TIMER_FORWARD'; // timer count in forward
+export const TIMER_BACKWARD = 'TIMER_BACKWARD'; // timer count in backword
+export const TIMER_BACKGROUND_VALUE = 'TIMER_BACKGROUND_VALUE'; // time when app went offline
+export const IS_TIMER_RUNING = 'IS_TIMER_RUNING'; // is timer running local flag
+export const TIMER_START_TIME = 'TIMER_START_TIME'; // start time
+export const SIGN_UP_STEP = 'SIGN_UP_STEP';
+export const SELECTED_FAST_TIME_DATA = 'SELECTED_FAST_TIME_DATA'; // fasting hr
+export const ONGOING_FAST_ID = 'ONGOING_FAST_ID'; // ongoing fast id
+export const ONGOING_FAST_DATA = 'ONGOING_FAST_DATA'; // on going fast data object
+export const USER_DATA = 'USER_DATA';
