@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/FONTSPRINGDEMO-ProximaNovaBold.otf",
+      "sha1": "ce03632e9e9a57c0721f8aeff722843f73cb4bd6"
+    },
+    {
+      "path": "assets/fonts/FONTSPRINGDEMO-ProximaNovaCondMediumRegular.otf",
+      "sha1": "4862119bf3dc571c19c56b9894a42c050b4f9482"
+    },
+    {
+      "path": "assets/fonts/FONTSPRINGDEMO-ProximaNovaExCnRegular.otf",
+      "sha1": "a0e8ed6da956e37b371839daa0e4837a44b2d5d6"
+    },
+    {
+      "path": "assets/fonts/ProximaNova-Bold.ttf",
+      "sha1": "7d71383fec1c47e36521fc66a1884827da9bb376"
+    },
+    {
+      "path": "assets/fonts/ProximaNova-Medium.ttf",
+      "sha1": "65c669b582fdb9634910d09e69f40e68b68723ce"
+    },
+    {
+      "path": "assets/fonts/ProximaNova-Regular.ttf",
+      "sha1": "e316a9693822a1a1b6e6dc9ddc73e9d5a3309c04"
+    },
+    {
+      "path": "assets/fonts/ProximaNovaExCn-Bold.otf",
+      "sha1": "9cf77b20c9bbca1f252a08f89e7fdab697525a22"
+    }
+  ]
+}

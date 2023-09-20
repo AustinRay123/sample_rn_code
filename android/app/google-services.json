@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "802945116437",
+    "project_id": "innofast-eb898",
+    "storage_bucket": "innofast-eb898.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802945116437:android:14753ecd3f1bf3f7f6611c",
+        "android_client_info": {
+          "package_name": "com.fasting_app_rn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802945116437-cv9aobebkf7r5ava13pbhv77nb0qo55c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fasting_app_rn",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "802945116437-nq5runteb5nc3rtnfhrofv2rnotl033e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fasting_app_rn",
+            "certificate_hash": "e592dfda5110aa486de58f47de6649d40d8ea7c6"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsvfWdNGSt7ZgKRhA60FAA1jCAiloZ5ZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802945116437-43joenu1ns9g8enfi7d8iivbao74dvui.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802945116437-q88t95u4mjsdaickqcumtgq03fdn86tc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.fasting-app-rn"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
