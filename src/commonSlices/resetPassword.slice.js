@@ -37,11 +37,9 @@ export const forgotPassword = createAsyncThunk(
       if (response.data.status == false) {
         return response.data;
       } else {
-        console.log('Response of Forgot password API ==', response.data);
         return response.data;
       }
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -54,11 +52,9 @@ export const verifyOTP = createAsyncThunk(
       if (response.data.status == false) {
         return response.data;
       } else {
-        console.log('Response of Verify OTP API ==', response.data);
         return response.data;
       }
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -67,16 +63,13 @@ export const resetPassword = createAsyncThunk(
   'RESET_PASSWORD',
   async (params, thunkAPI) => {
     try {
-      console.log('Params in reset', params);
       const response = await client.post(URL.RESET_PASSWORD, params);
       if (response.data.status == false) {
         return response.data;
       } else {
-        console.log('Response of Verify OTP API ==', response.data);
         return response.data;
       }
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },

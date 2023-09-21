@@ -4,14 +4,12 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
-  ActivityIndicator,
   StatusBar,
 } from 'react-native';
 import Modal from 'react-native-modal';
-import {dimens, fontsizes} from '../../constants/dimens';
+import {dimens} from '../../constants/dimens';
 import RoundedButtom from '../RoundedButtom';
 import {useTheme} from '@react-navigation/native';
-import font from '../../constants/fonts';
 import useStyles from './heightPickerStyle';
 import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment';
@@ -35,10 +33,7 @@ const CustomHeightPicker = ({
   const flatListRef = useRef(null);
   const {colors} = useTheme();
   const [height, setHeight] = React.useState(null);
-  // const heightData = Array.from({length: 221}, (_, index) => ({
-  //   key: `${index}`,
-  //   value: `${index + 30}`,
-  // }));
+ 
   const heightData = Array.from({length: 8}, (_, index) => ({
     key: `${index}`,
     value: `${index + 1}`,
@@ -82,17 +77,13 @@ const CustomHeightPicker = ({
       time: currentTime,
       height: weightSelector.height,
     };
-    // console.log('params----', params);
-    // return;
     dispatch(userHeightDetails(params)).then(() => {
       dispatch(userProfileDetails());
       onClose();
-      // dispatch(editHeight(selectedHeight));
     });
   };
 
   const renderHeightItem = ({item, index}) => {
-    // const isSelected = index === centerIndex;
     const isSelected = item.value === selectedHeight;
 
     return (
@@ -155,23 +146,6 @@ const CustomHeightPicker = ({
     }
   };
 
-  // const renderCenterPointer = () => (
-  //   <View
-  //     style={{position: 'absolute', alignSelf: 'center', top: 105, left: 50}}>
-  //     <View
-  //       style={{
-  //         width: 100,
-  //         height: 44,
-  //         backgroundColor: '#3498db',
-  //         borderRadius: 18,
-  //         justifyContent: 'center',
-  //         alignItems: 'center',
-  //       }}>
-  //       <Text style={{color: 'white', fontSize: 18}}>{selectedValue}</Text>
-  //     </View>
-  //   </View>
-  // );
-
   return (
     <Modal
       animationInTiming={600}
@@ -200,12 +174,10 @@ const CustomHeightPicker = ({
           keyExtractor={item => item.key}
           contentContainerStyle={styles.flatListContainer}
         />
-        {/* {renderCenterPointer()} */}
         <RoundedButtom
           onPress={() => apiParams()}
           title={
             weightSelector?.weightListLoading ? (
-              // <ActivityIndicator size="small" color={colors.white} />
               <ProgressIndicator size="small" color={colors.white} />
             ) : (
               'Select Height'
@@ -216,7 +188,6 @@ const CustomHeightPicker = ({
           gradColors={[colors.signupLightBlue, colors.signupDarkBlue]}
           gradStyle={styles.gradeStyle}
           container={styles.rButtonContainer}
-          //   isLinearGradiantApplied={false}
         />
       </View>
     </Modal>

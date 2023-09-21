@@ -12,7 +12,6 @@ export const requestUserPermission = async () => {
     messaging.AuthorizationStatus.PROVISIONAL;
 
   if (enabled) {
-    console.log('Authorization Status', authStatus);
     await getFCMToken();
     return true;
   } else {
@@ -24,19 +23,13 @@ export const requestUserPermission = async () => {
 const getFCMToken = async () => {
   let retry;
   let fcmtoken = await AsyncStorage.getItem('fcmtoken');
-  console.log('Old Token', fcmtoken);
-  // Alert.alert(fcmtoken);
   if (!fcmtoken) {
     try {
       let fcmtoken = await messaging().getToken();
-      console.log('New Token', fcmtoken);
-      // Alert.alert(fcmtoken);
       if (fcmtoken) {
         AsyncStorage.setItem('fcmtoken', fcmtoken);
-        console.log('New Token from iff', fcmtoken);
       }
     } catch (error) {
-      console.log('error token', error);
       retry = true;
     }
     if (retry) {
@@ -44,8 +37,6 @@ const getFCMToken = async () => {
         await messaging().requestPermission(); // IMPORTANT!
         await messaging().registerDeviceForRemoteMessages(); // IMPORTANT!
         let fcmtoken = await messaging().getToken();
-        console.log('New Token', fcmtoken);
-        // Alert.alert(fcmtoken);
         if (fcmtoken) {
           AsyncStorage.setItem('fcmtoken', fcmtoken);
         } else {
@@ -61,7 +52,6 @@ const getFCMToken = async () => {
 export const NotificationListener = navigation => {
   PushNotification.configure({
     onNotification: function (notification) {
-      console.log('NOTIFICATION from helper:', notification);
 
       // process the notification when app in foreground
       const {foreground, userInteraction, remote} = notification;
@@ -133,8 +123,6 @@ export const NotificationListener = navigation => {
       'Notification caused app to open from background state:',
       notification,
     );
-    console.log('you clicked on notification...');
-    //Add navigation redirection
   });
 
   // Check whether an initial notification is available

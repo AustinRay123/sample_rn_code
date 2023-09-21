@@ -15,14 +15,11 @@ export const getArticles = createAsyncThunk(
   'GET_ARTICLES',
   async (params, thunkAPI) => {
     try {
-      // console.log('params-- ', params);
       const response = await client.get(
         `${URL.ARTICLE_LIST}?per_page=${params.per_page}&page=${params.current_page}`,
       );
-      // console.log('Response of Get Articles API ==', response.data);
       return response.data;
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -36,10 +33,8 @@ export const getFeaturedArticles = createAsyncThunk(
         //https://sampleApp.ninjasforjava.com/api/article/list?per_page=10&page=1&is_featured=1
         `${URL.ARTICLE_LIST}?per_page=${params.per_page}&page=${params.current_page}&is_featured=${params.is_featured}`,
       );
-      // console.log('Response of Get Articles API ==', response.data);
       return response.data;
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },

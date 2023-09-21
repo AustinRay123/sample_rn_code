@@ -52,9 +52,7 @@ const ResetPassword = ({props}) => {
   const [showModal, setModal] = useState(false);
   const [showModalSuc, setModalSuc] = useState(false);
   useEffect(() => {
-    console.log('inside fulfil', selector.resetPasswordCheckStatus);
     if (selector.resetPasswordCheckStatus == 'fulfilled') {
-      console.log('inside if', selector?.resetPasswordRes?.status);
       if (selector?.resetPasswordRes?.status == true) {
         setModalSuc(true);
         dispatch(clearState());

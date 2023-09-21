@@ -191,12 +191,10 @@ const IntroScreen = props => {
                     AsyncStore.Keys.SIGN_UP_STEP,
                     '4',
                   ).then(res => {
-                    console.log('res 1 = ', res);
                     AsyncStore.storeJsonData(
                       AsyncStore.Keys.INTRO_KEY,
                       keyValue,
                     ).then(res => {
-                      console.log('res 2 = ', res);
                       props.navigation.replace(
                         commonStackIdentifier.choose_your_goal,
                       );

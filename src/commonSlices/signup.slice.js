@@ -50,17 +50,8 @@ export const checkEmailExists = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const response = await client.post(URL.CHECK_EMAIL_EXIST, params);
-      // ------ Uncomment if else code if needed ------- //
-      // if (response.data.status == false) {
-      //   // showToast(response.data.message);
-      //   return response.data;
-      // } else {
-      //   // showToast('Login Successfully');
-      //   return response.data;
-      // }
       return response.data;
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -76,9 +67,7 @@ export const signUp = createAsyncThunk(
       } else {
         return response.data;
       }
-      // return response.data;
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -94,9 +83,7 @@ export const updateProfile = createAsyncThunk(
       } else {
         return response.data;
       }
-      // return response.data;
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },

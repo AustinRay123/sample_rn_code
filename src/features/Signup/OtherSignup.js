@@ -73,7 +73,6 @@ const OtherSignup = ({props}) => {
       if (res?.payload?.data?.isExists == false) {
         props.navigation.navigate(commonStackIdentifier.create_password);
       } else {
-        console.log('IN else');
         setErrorModal(true);
       }
     });
@@ -81,17 +80,12 @@ const OtherSignup = ({props}) => {
 
   useEffect(() => {
     GoogleSignin.configure({
-      // scopes: ['email'], // what API you want to access on behalf of the user, default is email and profile
       webClientId:
         '802945116437-43joenu1ns9g8enfi7d8iivbao74dvui.apps.googleusercontent.com',
-
-      // offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
     });
   }, []);
   useEffect(() => {
-    console.log('Creds', googleCredentials?.token);
     if (googleCredentials?.token) {
-      console.log('iniffff', googleCredentials.providerId.split('.')[0]);
       const params = {
         id_token: googleCredentials.token,
         social_type: googleCredentials.providerId.split('.')[0],
@@ -143,14 +137,12 @@ const OtherSignup = ({props}) => {
                   );
               }
             } catch (e) {
-              console.log('ERROR', e);
             }
             dispatch(clearGoogleState());
           } else {
             // setModal(true);
             AsyncStore.storeData(AsyncStore.Keys.SIGN_UP_STEP, '5');
             props.navigation.replace(commonStackIdentifier.home_bottom_tabs);
-            console.log('ERROR try After some time');
             dispatch(clearGoogleState());
           }
         });
@@ -165,11 +157,8 @@ const OtherSignup = ({props}) => {
       console.warn('userinfo', userinfo);
       const temp = auth.GoogleAuthProvider.credential(userinfo.idToken);
       setGooggleCreds(temp);
-      const res = await auth().signInWithCredential(temp);
 
-      console.log('response of success ===>>', JSON.stringify(temp));
     } catch (error) {
-      console.log('error is =>>>', error);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
       } else if (error.code === statusCodes.IN_PROGRESS) {
         alert('Signin in progress');

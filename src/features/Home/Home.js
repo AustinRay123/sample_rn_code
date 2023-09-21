@@ -156,9 +156,6 @@ const Home = ({props}) => {
   const [selectedField, setSelectedField] = React.useState('');
   const [isContentVisible, setIsContentVisible] = React.useState(false);
   const selectorEditProfile = useSelector(state => state.editProfileReducer);
-  
-
-  // console.log('myProfileSelector---', myProfileSelector?.loading);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -226,10 +223,6 @@ const Home = ({props}) => {
 
       let updated_fasting_hr_backVlue = myRef_time_backward.current + tempminus; // here we find the new value for reverse timer
 
-      console.log(
-        'manthan myRef_time_backward.temp_current_backVlue ',
-        updated_fasting_hr_backVlue - myRef_time_forward.current,
-      );
       let finalValue = updated_fasting_hr_backVlue - myRef_time_forward.current; // here we minus the current value of forward timer from new reversetotal so we get new reverse value
       myRef_time_backward.current = finalValue;
       setTimeInreverse(finalValue);
@@ -260,7 +253,6 @@ const Home = ({props}) => {
 
       appState.current = nextAppState;
       setAppStateVisible(appState.current);
-      console.log('AppState');
       if (
         appState.current === 'inactive' ||
         appState.current === 'background'
@@ -268,7 +260,6 @@ const Home = ({props}) => {
         storeTimerinlocalDb();
       }
       if (appState.current == 'active') {
-        console.log('App has come to the foreground!');
         getTimerFromServer();
       }
     });
@@ -362,11 +353,9 @@ const Home = ({props}) => {
 
   useEffect(() => {
     Linking.getInitialURL().then(url => {
-      console.log('url = ', url);
       if (url) {
         let urlArray = url.split('/');
         let screenName = urlArray[urlArray.length - 1];
-        console.log('screenName = ', screenName);
         navigation.navigate(screenName);
       }
     });
@@ -494,8 +483,6 @@ const Home = ({props}) => {
       myRef_Fasting_hours.current,
     );
     setBackgroundTime(moment().valueOf());
-
-    console.log('manthan store into db ');
   };
   const getTimerFromlocalDb = async () => {
     let isTimerRuning = await Asyncstore.getJsonData(
@@ -537,7 +524,6 @@ const Home = ({props}) => {
       setStartedTime(startTimetemp);
       let calculateEndTimev = calculateEndTime(startTimetemp, fastingHr);
       setEndTime(calculateEndTimev);
-      console.log('manthan get from db ');
       
     } else {
       // onStopTimerCalled();
@@ -589,7 +575,6 @@ const Home = ({props}) => {
         Asyncstore.Keys.ONGOING_FAST_ID,
         getAPiOngoingFast.id,
       );
-      console.log('manthan set from server');
       storeTimerinlocalDb();
     } else {
       // onStopTimerCalled();
@@ -649,18 +634,11 @@ const Home = ({props}) => {
     myRef_Fasting_hours.current = fastingHour;
     const totalSeconds2 = fastingHour * 3600;
     setTimeInreverse(totalSeconds2);
-    console.log('manthan get from db init 00 ');
     if (fastingHr == undefined) {
-      // when user has not selected any fast
-      // navigation.navigate(commonStackIdentifier.choose_a_fast, {
-      //   isFromHome: true,
-      // });
 
       fastingHour = parseInt(1);
       setFastingHourState(1);
       myRef_Fasting_hours.current = 1;
-
-      console.log('manthan get from db init 11 ');
     }
   };
   const onStartTimerCalled = () => {
@@ -764,7 +742,6 @@ const Home = ({props}) => {
       formData.append('timeInreverse', timeInreverse);
       formData.append('timeBackground', bgTime);
       formData.append('appLocalData', payLoadtemp);
-      console.log('manthan add payload ', payLoadtemp);
       dispatch(addFast(formData));
       setOnStartClick(false);
     }
@@ -814,11 +791,7 @@ const Home = ({props}) => {
       formData.append('timeBackground', bgTime);
       formData.append('appLocalData', payLoadtemp);
 
-      console.log('manthan update payLoadtemp ', payLoadtemp);
-      console.log('manthan update formData ', formData);
       dispatch(updateFast(formData));
-      // Asyncstore.storeJsonData(Asyncstore.Keys.ONGOING_FAST_ID, -1);
-
       setOnEndClick(false);
     }
   };
@@ -863,13 +836,7 @@ const Home = ({props}) => {
       formData.append('timeBackground', bgTime);
       formData.append('appLocalData', payLoadtemp);
 
-      console.log(
-        'manthan update in starttime or goal payLoadtemp ',
-        payLoadtemp,
-      );
-
       dispatch(updateFast(formData));
-      // Asyncstore.storeJsonData(Asyncstore.Keys.ONGOING_FAST_ID, -1);
       setIsStartTimeUpdated(false);
     }
   };

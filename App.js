@@ -210,7 +210,6 @@ function App() {
       const subscription2 = AppState.addEventListener('blur', nextAppState => {
         appState.current = nextAppState;
         setAppStateVisible(appState.current);
-        console.log('AppState 2 ', appState.current);
       });
 
       return () => {
@@ -322,149 +321,8 @@ function App() {
                   component={ResetPasswordScreen}
                   options={{headerShown: false}}
                 />
-                <Stack.Screen
-                  name={commonStackIdentifier.choose_your_goal}
-                  component={ChooseYourGoalScreen}
-                  options={{headerShown: false, gestureEnabled: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.home_bottom_tabs}
-                  component={HomeBottomTabScreen}
-                  options={{headerShown: false, gestureEnabled: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.choose_a_fast}
-                  options={{headerShown: false, gestureEnabled: false}}
-                  component={ChooseAFastScreen}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.ArticleDetailsScreen}
-                  component={ArticleDetailsScreen}
-                  options={{headerShown: false}}
-                />
-
-                {/* <Stack.Screen
-                  name={commonStackIdentifier.home_screen}
-                  component={HomeScreen}
-                /> */}
-                <Stack.Screen
-                  name={commonStackIdentifier.profile}
-                  options={{headerShown: false}}
-                  component={ProfileScreen}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.weight_list}
-                  options={{headerShown: false}}
-                  component={WeightListScreen}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.water_list}
-                  options={{headerShown: false}}
-                  component={WaterListScreen}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.activity_list}
-                  options={{headerShown: false}}
-                  component={ActivityListScreen}
-                />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Home2" component={HomeScreen2} />
-                {/* <Stack.Screen name="Home" component={Home} /> */}
-                <Stack.Screen
-                  name="StartYourFastComp"
-                  component={StartYourFastComp}
-                />
-
-                <Stack.Screen
-                  name="AnimatedCircleComponent"
-                  component={AnimatedCircleComponent}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.calendar_screen}
-                  component={CalenderScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.calendar_days_screen}
-                  component={CalendarDaysScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.fast_list_screen}
-                  component={FastListScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.custom_webview}
-                  component={CustomWebView}
-                  options={{headerShown: false}}
-                />
-                {/* Below listed screen is quiz screen from new xd */}
-                <Stack.Screen
-                  name={commonStackIdentifier.quiz_one_screen}
-                  component={QuizOneScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.quiz_two_screen}
-                  component={QuizTwoScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.quiz_three_screen}
-                  component={QuizThreeScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.quiz_four_screen}
-                  component={QuizFourScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.quiz_five_screen}
-                  component={QuizFiveScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.quiz_six_screen}
-                  component={QuizSixScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.quiz_seven_screen}
-                  component={QuizSevenScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.quiz_eight_screen}
-                  component={QuizEightScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.quick_snap_screen}
-                  component={QuickSnapScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.measurement_screen}
-                  component={MeasurementScreen}
-                  options={{headerShown: false}}
-                />
-                {/* <Stack.Group screenOptions={{presentation: 'modal'}}> */}
-                <Stack.Screen
-                  options={{
-                    headerShown: false,
-                    presentation: 'modal',
-                    cardStyleInterpolator:
-                      CardStyleInterpolators.forVerticalIOS,
-                    // headerStyleInterpolator:
-                    //   HeaderStyleInterpolators.forUIKit,
-                    // ...TransitionPresets.ModalSlideFromBottomIOS,
-                  }}
-                  name={commonStackIdentifier.setting_screen}
-                  component={SettingScreen}
-                />
-                {/* </Stack.Group> */}
               </Stack.Navigator>
             </NavigationContainer>
           </AppThemeContext.Provider>

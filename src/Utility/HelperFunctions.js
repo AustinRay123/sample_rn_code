@@ -25,11 +25,6 @@ export const chooseAppThemeBasedOnCurrentTime = () => {
   const twelveHourFormatTime = `${twelveHourFormatHours
     .toString()
     .padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-  console.log(`Current Time (24-hour format): ${formattedTime}`);
-  console.log(
-    `Current Time (12-hour format): ${twelveHourFormatTime} ${period}`,
-  );
-
   return period;
 };
 

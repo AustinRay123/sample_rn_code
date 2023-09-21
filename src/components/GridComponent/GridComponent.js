@@ -1,20 +1,17 @@
 import {useTheme} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import font from '../../constants/fonts';
 import {fontsizes} from '../../constants/dimens';
 import useStyles from './GridComponentStyle';
 
-const GridComponent = ({data, questionIndex, selectedBox, setSelectedBox}) => {
+const GridComponent = ({selectedBox, setSelectedBox}) => {
   const {colors} = useTheme();
   const styles = useStyles();
-  // const [selectedBox, setSelectedBox] = useState(null);
 
   const handleBoxPress = boxIndex => {
     setSelectedBox(boxIndex === selectedBox ? null : boxIndex);
   };
-
-  // console.log('data-----', data[questionIndex]);
 
   return (
     <View style={styles.container}>

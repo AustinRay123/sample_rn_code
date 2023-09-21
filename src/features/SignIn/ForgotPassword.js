@@ -44,9 +44,7 @@ const ForgotPassword = ({props}) => {
   const topSectionHeight = screenHeight * 0.14;
   const [showModal, setModal] = useState(false);
   useEffect(() => {
-    console.log('inside useEffect', selector.forgotPasswordCheckStatus);
     if (selector.forgotPasswordCheckStatus == 'fulfilled') {
-      console.log('inside fulfil', selector?.forgotPasswordRes);
       if (selector?.forgotPasswordRes?.status == true) {
         setIsAddClicked(true);
       } else {

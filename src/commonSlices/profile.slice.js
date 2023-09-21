@@ -25,10 +25,8 @@ export const userProfileDetails = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const response = await client.post(URL.MY_PROFILE);
-      // console.log('response.profile.data-----', response.data);
       return response.data;
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -39,10 +37,8 @@ export const cancelSubscription = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const response = await client.post(URL.CANCEL_SUBSCRIPTION);
-      // console.log('response.profile.data-----', response.data);
       return response.data;
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },

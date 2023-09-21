@@ -48,18 +48,6 @@ const Signup = ({props}) => {
     props.navigation.navigate(commonStackIdentifier.other_signup_screeen);
   };
 
-  useEffect(() => {
-    if (Platform.OS === 'ios') {
-      const unsubscribe = appleAuth.onCredentialRevoked(async () => {
-        console.log('revoked function is executed..');
-      });
-
-      return () => {
-        unsubscribe();
-      };
-    }
-  }, []);
-
   async function onAppleButtonPress() {
     // Start the sign-in request
     const appleAuthRequestResponse = await appleAuth.performRequest({
@@ -86,9 +74,6 @@ const Signup = ({props}) => {
       const appleAuthRequestResponse = await appleAuth.performRequest({
         requestedOperation: appleAuth.Operation.LOGOUT,
       });
-
-      // User is logged out
-      console.log('User logged out:', appleAuthRequestResponse);
     } catch (error) {
       console.error('Error logging out with Apple:', error);
     }

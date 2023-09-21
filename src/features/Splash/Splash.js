@@ -37,7 +37,6 @@ const Splash = ({props}) => {
   useEffect(() => {
     setTimeout(() => {
       AsyncStore.getJsonData(AsyncStore.Keys.SIGN_UP_STEP).then(value => {
-        console.log('SIGN_UP_STEP = ', value, '  ', typeof value);
         if (value == '2') {
           props.navigation.replace(commonStackIdentifier.create_profile);
         } else if (value == '3') {

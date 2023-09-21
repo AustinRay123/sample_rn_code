@@ -46,9 +46,8 @@ const handleNotification = notification => {
 
 // Background handler for Android
 const backgroundHandler = notification => {
-  console.log('notification--backgroundHandler--', notification);
   // Handle the notification received when the app is in the background or killed state
-  handleScheduledNotification();
+  handleScheduledNotification(notification);
 };
 
 const showNotification = (title, message) => {

@@ -27,17 +27,14 @@ const initialState = {
 export const addFast = createAsyncThunk(
   'ADD_FAST_HOME',
   async (params, thunkAPI) => {
-    // console.log('URL of==>', URL.ADD_FAST, params);
     try {
       const response = await client.post(URL.ADD_FAST, params);
       if (response.data.status == false) {
         return response.data;
       } else {
-        console.log('Response of ADD_FAST  API ==', response.data);
         return response.data;
       }
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -45,7 +42,6 @@ export const addFast = createAsyncThunk(
 export const fastList = createAsyncThunk(
   'FAST_LIST_HOME',
   async (params, thunkAPI) => {
-    console.log('parmas', params?.current_page, 'Per PAge', params?.per_page);
     try {
       const response = await client.get(
         `${URL.FAST_LIST}?per_page=${params?.per_page}&page=${params?.current_page}`,
@@ -53,11 +49,9 @@ export const fastList = createAsyncThunk(
       if (response.data.status == false) {
         return response.data;
       } else {
-        console.log('Response of FAST_LIST API ==', response.data);
         return response.data;
       }
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -66,17 +60,14 @@ export const fastList = createAsyncThunk(
 export const fastListLatest = createAsyncThunk(
   'FAST_LIST_HOME',
   async (params, thunkAPI) => {
-    console.log('parmas', params?.current_page, 'Per PAge', params?.per_page);
     try {
       const response = await client.get(`${URL.FAST_LIST_LATEST}`);
       if (response.data.status == false) {
         return response.data;
       } else {
-        console.log('Response of FAST_LIST API ==', response.data);
         return response.data;
       }
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -89,11 +80,9 @@ export const updateFast = createAsyncThunk(
       if (response.data.status == false) {
         return response.data;
       } else {
-        console.log('Response of UPDATE_FAST API ==', response.data);
         return response.data;
       }
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },

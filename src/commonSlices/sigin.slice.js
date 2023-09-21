@@ -32,12 +32,9 @@ export const signIn = createAsyncThunk('SIGNIN', async (params, thunkAPI) => {
     const response = await client.post(URL.SIGNIN, params);
     // ------ Uncomment if else code if needed ------- //
     if (response.data.status == false) {
-      // showToast(response.data.message);
-      // Alert.alert(response?.data?.message);
       return response.data;
     } else {
       // showToast('Login Successfully');
-      console.log('Response of Sign in API ==', response.data);
       const token = response?.data?.data?.token;
       AsyncStore.storeData(AsyncStore.Keys.ACCESS_TOKEN, token);
       AsyncStore.storeJsonData(AsyncStore.Keys.USER_DATA, response?.data?.data);
@@ -45,7 +42,6 @@ export const signIn = createAsyncThunk('SIGNIN', async (params, thunkAPI) => {
     }
     // return response.data;
   } catch (error) {
-    console.log('error-- ', error);
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });

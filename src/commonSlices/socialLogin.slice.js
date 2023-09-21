@@ -21,16 +21,11 @@ const initialState = {
 export const googleSignup = createAsyncThunk(
   'SOCIAL_LOGIN',
   async (params, thunkAPI) => {
-    console.log('Params of Social sign up', params);
     try {
-      console.log('IN TRY OF SOCIAL LOGIN API ');
       const response = await client.post(URL.SOCIAL_LOGIN, params);
-      // ------ Uncomment if else code if needed ------- //
-      console.log('IN TRY OF SOCIAL LOGIN API ', JSON.stringify(response));
       if (response.data.status == false) {
         return response.data;
       } else {
-        console.log('Response of Sign in API ==', response.data);
         const token = response?.data?.data?.token;
         AsyncStore.storeData(AsyncStore.Keys.ACCESS_TOKEN, token);
         AsyncStore.storeJsonData(
@@ -40,7 +35,6 @@ export const googleSignup = createAsyncThunk(
         return response.data;
       }
     } catch (error) {
-      console.log('error-- ', error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -60,7 +54,6 @@ export const socialSignUpSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(googleSignup.pending, state => {
       state.loading = true;
-      // state.googleSignupRes = {};
       (state.googleSignupCheckStatus = false),
         (state.googleSignupCheckStatus = 'pending');
     });
@@ -76,22 +69,6 @@ export const socialSignUpSlice = createSlice({
       state.googleSignupRes = {};
       state.googleSignupCheckStatus = 'rejected';
     });
-    // builder.addCase(googleSignIn.pending, state => {
-    //   state.loading = true;
-    //   state.googleSignInCheckStatus = 'pending';
-    // });
-    // builder.addCase(googleSignIn.fulfilled, (state, action) => {
-    //   if (action.payload) {
-    //     state.loading = false;
-    //     state.googleSignInRes = action.payload;
-    //     state.googleSignInCheckStatus = 'fulfilled';
-    //   }
-    // });
-    // builder.addCase(googleSignIn.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.googleSignInRes = {};
-    //   state.googleSignInCheckStatus = 'rejected';
-    // });
   },
 });
 export const {clearGoogleState} = socialSignUpSlice.actions;

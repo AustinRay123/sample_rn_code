@@ -110,7 +110,6 @@ const SignIn = ({props}) => {
           } else {
             AsyncStore.storeData(AsyncStore.Keys.SIGN_UP_STEP, '5');
             props.navigation.replace(commonStackIdentifier.home_bottom_tabs);
-            console.log('ERROR try After some time');
             dispatch(clearGoogleState());
           }
         });
