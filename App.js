@@ -205,28 +205,9 @@ function App() {
   }, [isDarkTheme]);
 
   useEffect(() => {
-    // const subscription = AppState.addEventListener('change', nextAppState => {
-    //   if (
-    //     appState.current.match(/inactive|background/) &&
-    //     nextAppState === 'active'
-    //   ) {
-    //     console.log('App has come to the foreground!');
-    //   }
-
-    //   appState.current = nextAppState;
-    //   setAppStateVisible(appState.current);
-    //   console.log('AppState', appState.current);
-    // });
 
     if (Platform.OS == 'android') {
       const subscription2 = AppState.addEventListener('blur', nextAppState => {
-        // if (
-        //   appState.current.match(/inactive|background/) &&
-        //   nextAppState === 'active'
-        // ) {
-        //   console.log('App has come to the foreground!');
-        // }
-
         appState.current = nextAppState;
         setAppStateVisible(appState.current);
         console.log('AppState 2 ', appState.current);
@@ -238,86 +219,14 @@ function App() {
     }
   }, []);
 
-  // const themes = isDarkTheme ? MyDarkTheme : MyDefaultTheme;
-  // let themes = chooseAppThemeBasedOnCurrentTime() !== "PM" ? MyDefaultThemeDay : MyDefaultTheme; // setting the theme based on AP pr PM
-  // chooseAppThemeBasedOnCurrentTime() !== "PM" ? constants.APP_THEME = "MyDefaultThemeDay" : constants.APP_THEME = "MyDefaultTheme";  // setting the theme global constant based on AP pr PM, to manage background image in all screen
-
   const updateAppTheme = data => {
     if (data) {
       AppThemeName = data;
       setTheme(data);
       fetchStoredTheme();
-      //  themes = chooseAppThemeBasedOnCurrentTime() == "PM" ? MyDefaultThemeDay : MyDefaultTheme; // setting the theme based on AP pr PM
-      // chooseAppThemeBasedOnCurrentTime() == "PM" ? constants.APP_THEME = "MyDefaultThemeDay" : constants.APP_THEME = "MyDefaultTheme";  // setting the theme global constant based on AP pr PM, to manage background image in all screen
     }
   };
-  // const linking = {
-  //   prefixes: ['innofast://'],
-  //   config: {
-  //     screens: commonStackIdentifier,
-  //   },
-  // };
-  // console.log('navigationRef = ', navigationRef);
-  const linking = {
-    prefixes: ['innofast://'],
-
-    // // Custom function to get the URL which was used to open the app
-    // async getInitialURL() {
-    //   // First, you would need to get the initial URL from your third-party integration
-    //   // The exact usage depend on the third-party SDK you use
-    //   // For example, to get the initial URL for Firebase Dynamic Links:
-    //   const {isAvailable} = utils().playServicesAvailability;
-
-    //   // if (isAvailable) {
-    //   //   const initialLink = await dynamicLinks().getInitialLink();
-
-    //   //   if (initialLink) {
-    //   //     return initialLink.url;
-    //   //   }
-    //   // }
-
-    //   // As a fallback, you may want to do the default deep link handling
-    //   const url = await Linking.getInitialURL();
-    //   console.log('url = ', url);
-    //   return url;
-    // },
-
-    // // Custom function to subscribe to incoming links
-    // // subscribe(listener) {
-    // //   // Listen to incoming links from Firebase Dynamic Links
-    // //   const unsubscribeFirebase = dynamicLinks().onLink(({url}) => {
-    // //     listener(url);
-    // //   });
-
-    // //   // Listen to incoming links from deep linking
-    // //   const linkingSubscription = Linking.addEventListener('url', ({url}) => {
-    // //     listener(url);
-    // //   });
-
-    // //   return () => {
-    // //     // Clean up the event listeners
-    // //     unsubscribeFirebase();
-    // //     linkingSubscription.remove();
-    // //   };
-    // // },
-
-    config: {
-      // Deep link configuration
-      screens: commonStackIdentifier,
-      // Home: {
-      //   path: 'home',
-      //   screens: {
-      //     Profile: {
-      //       path: 'profile/:id',
-      //       parse: {
-      //         id: id => `${id}`,
-      //       },
-      //     },
-      //     Settings: 'settings',
-      //   },
-      // },
-    },
-  };
+  
   const fetchStoredTheme = async () => {
     await AsyncStore.getData(AsyncStore.Keys.APP_THEME_OPTION_SELECTED)
       .then(value => {
@@ -337,7 +246,6 @@ function App() {
 
           AppThemeObject = themesLocal;
           setThemeObject(themesLocal);
-          // AppThemeName= value;
           chooseAppThemeBasedOnCurrentTime() == 'PM'
             ? (AppThemeName = 'MyDefaultThemeDay')
             : (AppThemeName = 'MyDefaultTheme'); // setting the theme global constant based on AP pr PM, to manage background image in all screen
@@ -346,9 +254,7 @@ function App() {
           setThemeObject(MyDefaultTheme);
           AppThemeName = 'MyDefaultTheme';
         }
-        // AppThemeObject = MyDefaultTheme;
         setTheme(value);
-        //
       })
       .catch(() => {
         setThemeObject(MyDefaultTheme);
@@ -364,17 +270,12 @@ function App() {
       <GestureHandlerRootView style={{flex: 1}}>
         <PaperProvider>
           <AppThemeContext.Provider value={{AppThemeName, updateAppTheme}}>
-            {/* // <NavigationContainer theme={ theme == "dark" ? colors.dark : colors.light}> */}
-            {/* <NavigationContainer theme={themes}> */}
-            {/* <NavigationContainer theme={themes}> */}
             <NavigationContainer
               theme={appThemeObject}
               ref={navigationRef}
               linking={linking}>
               <Stack.Navigator
                 initialRouteName={commonStackIdentifier.splash_screen}
-                // initialRouteName={commonStackIdentifier.home_bottom_tabs}
-                // initialRouteName={'Home'}
                 screenOptions={{animation: 'slide_from_right'}}>
                 <Stack.Screen
                   name={commonStackIdentifier.intro_slider}
@@ -401,27 +302,6 @@ function App() {
                   component={CreatePasswordScreen}
                   options={{headerShown: false}}
                 />
-                <Stack.Screen
-                  name={commonStackIdentifier.create_profile}
-                  component={CreateProfile}
-                  options={{headerShown: false, gestureEnabled: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.create_profile_copy}
-                  component={CreateProfileCopy}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.progress}
-                  component={ProgressScreen}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name={commonStackIdentifier.weight_detailed_reports}
-                  component={WeightDetailsScreen}
-                  options={{headerShown: false}}
-                />
-
                 <Stack.Screen
                   name={commonStackIdentifier.signin_screen}
                   component={SignIn}
