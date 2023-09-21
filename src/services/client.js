@@ -15,15 +15,9 @@ export const client = async (
     Accept: 'application/json',
     'Content-Type': 'multipart/form-data',
   };
-
-  // if (authToken) {
-  //     headers['auth-token'] = authToken;
-  // }
   if (authToken) {
     headers['Authorization'] = 'Bearer ' + authToken;
   }
-
-  console.log('authToken:------', authToken);
 
   const config = {
     method: methodType,
@@ -43,11 +37,9 @@ export const client = async (
       url: endpoint,
       data: config?.body,
       Accept: 'application/json',
-      // headers: { "Content-Type": "application/json; charset=UTF-8" },
+      
       headers: config.headers,
-      // params: {
-      //   page: params,
-      // },
+      
     })
       .then(async result => {
         // return result;
